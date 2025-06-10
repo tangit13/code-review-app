@@ -20,10 +20,12 @@ function App() {
     prism.highlightAll()
   }, [])
 
-  async function reviewCode() {
-    const response = await axios.post('http://localhost:3000/ai/get-review', { code })
-    setReview(response.data)
+    async function reviewCode() {
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+    const response = await axios.post(`${API_BASE_URL}/ai/get-review`, { code });
+    setReview(response.data);
   }
+
 
   return (
     <>
